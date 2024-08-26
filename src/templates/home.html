@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- Quizzes. -->
+        <div class="col-md-8">
+            <h1><i class="bi bi-book"></i> Quizzes</h1>
+            <hr>
+            {% if quizzes %}
+                <div class="list-group rounded-0">
+                    {% for quiz in quizzes %}
+                        <a href="{% url 'quiz_detail' quiz.id %}" class="list-group-item list-group-item-action">{{ quiz.title }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <!-- Categories. -->
+        <div class="col-md-4">
+            <h1><i class="bi bi-ui-radios-grid"></i> Categories</h1>
+            <hr>
+            {% if categories %}
+                <div class="list-group rounded-0">
+                    {% for category in categories %}
+                        {% if category.emoji %}
+                            <a href="{% url 'category_detail' category.slug %}" class="list-group-item list-group-item-action">{{ category.emoji }} {{ category.name }}</a>
+                        {% else %}
+                            <a href="{% url 'category_detail' category.slug %}" class="list-group-item list-group-item-action">{{ category.name }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
