@@ -6,9 +6,9 @@ from django.forms import modelformset_factory
 def home(request):
 	quizzes = models.Quiz.objects.all()
 	categories = models.Category.objects.all()
-	return render(request, 'home.html', {'quizzes': quizzes, 'categories': categories})
+	return render(request, 'main/home.html', {'quizzes': quizzes, 'categories': categories})
 
-# Quiz Detail View
+# Quiz.
 def quiz_detail(request, quiz_id):
 	'''View to attempt all questions.'''
 	quiz = get_object_or_404(models.Quiz, id=quiz_id)
@@ -32,17 +32,21 @@ def quiz_detail(request, quiz_id):
 			'questions': total_questions,
 			'name': name.title(),
 		}
-		return render(request, 'quiz_detail.html', {'quiz': quiz, 'results': results})
+		return render(request, 'main/quiz_detail.html', {'quiz': quiz, 'results': results})
 	else:
-		return render(request, 'quiz_detail.html', {'quiz': quiz, 'questions': questions})
+		return render(request, 'main/quiz_detail.html', {'quiz': quiz, 'questions': questions})
 
-# Test view.
+# Test.
 def test(request):
-	return render(request, 'test.html', {})
+	return render(request, 'main/test.html', {})
 
-# Category Detail View
+# Category.
 def category_detail(request, slug):
 	'''View for categories.'''
 	category = get_object_or_404(models.Category, slug=slug)
 	quizzes = models.Quiz.objects.filter(category=category)
-	return render(request, 'category_detail.html', {'quizzes': quizzes, 'category': category})
+	return render(request, 'main/category_detail.html', {'quizzes': quizzes, 'category': category})
+
+# Portfolio.
+def portfolio(request):
+	return render(request, 'portfolio.html', {})

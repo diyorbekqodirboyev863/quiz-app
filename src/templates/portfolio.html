@@ -1,0 +1,35 @@
+<!-- portfolio.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+    <div class="row d-flex align-items-center">
+        <div class="col-md-7">
+            <h6 class="display-6">
+                Welcome to,
+            </h6>
+            <h1 class="display-1">Quiz App</h1>
+            <p>
+                A simple quiz app built with Django framework that allows users to create, take, and share quizzes. Users can also categorize their quizzes and view leaderboards.
+            </p>
+            <!-- Social links. -->
+            <div class="mb-3">
+                <a class="btn btn-outline-primary" target="_blank" href="https://github.com/diyorbekqodirboyev863"><i class="bi bi-github"></i></a>
+                <a class="btn btn-outline-primary" target="_blank" href="https://x.com/Qo33577Diyorbek"><i class="bi bi-twitter"></i></a>
+                <a class="btn btn-outline-primary" target="_blank" href="https://www.instagram.com/algorithm_builder/"><i class="bi bi-instagram"></i></a>
+                <a class="btn btn-outline-primary" target="_blank" href="https://www.facebook.com/profile.php?id=100083835917374"><i class="bi bi-facebook"></i></a>
+            </div>
+            <a href="{% url 'home' %}">
+                <button type="button" class="btn btn-primary">
+                    Get Started
+                </button>
+            </a>
+        </div>
+        <div class="col-md-5">
+            <img class="img-fluid" src="{% static 'assets/img/earth.gif' %}" alt="">
+        </div>
+    </div>
+{% endblock %}
